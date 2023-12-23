@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Test RESTful API</title>
+</head>
+<body>
+	<h1>You are testing RESTful API</h1>
+	<h1>Test Post API</h1>
+	<form id="addproduct">
+		<label for="id">ID</label>
+		<input type="text" name="id"></input>
+		<br>
+		<label for="name">Name</label>
+		<input type="text" name="name"></input>
+		<br>
+		<input type="submit" value="Submit" onclick="callPostAPI(event)">
+	</form>
+
+
+<h1>Test Get API</h1>
+<form id="showallproducts">
+	<p><label for="mytextarea">Show all producet</label></p>
+	<textarea id="mytextarea" name="mytextarea" rows="4" cols="50"></textarea>
+	<br>
+	<input type="submit" value="Submit" onclick="callGetAPI(event)">
+</form>
+
+<script>
+	async function callPostAPI(event) {
+		event.preventDefault();
+		const myform = document.getElementById("addproduct");
+				
+		const data = {
+			id: myform.id.value,
+			name:myform.name.value,
+		};
+		
+		const option = {
+			method: "POST", 
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(data),
+		}
+
+		const res = await fetch("http:localhost:8080/products", option);
+		const msg = await res.text();
+		alert(msg);
+	}
+	async function callGetAPI(event) {
+		event.preventDefault();
+
+		const option = {
+			mode:"no-cors",
+		}
+		const res = await fetch("http:localhost:8080/products", option);
+		const result = await res.json();
+		
+		const myform = document.getElementById("showallproducts");
+		myform.mytextarea.innerHTML = JSON.stringify(result);
+	}	
+</script>
+</body>
+
+</html>

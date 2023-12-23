@@ -1,0 +1,109 @@
+สรุปคำสั่ง docker ฉบับสายย่อ เด็กแนว
+.
+1) ดูเวอร์ชั่น docker
+docker -v 
+.
+2) ล็อกอินเข้าไปใน docker hub
+docker login [OPTIONS] [SERVER]
+.
+3) logout ออกจาก docker hub
+docker logout 
+.
+4)  ค้นหาไฟล์ image จาก docker hub
+docker search <IMAGE>
+.
+5) ดาวน์โหลดไฟล์ image จาก docker hub มาที่เครื่องเรา
+docker pull <image_name>:<tag> 
+.
+6) รันไฟล์ image  -> เพื่อสร้าง container (สร้างกี่ตัวก็ได้)
+docker run [options] <image_name>:<tag>
+.
+7) ดูรายชื่อไฟล์ images ที่อยู่ในเครื่องเรา
+docker images
+docker images --no-trunc // แสดง Images ID แบบเต็มๆ
+.
+8) ลบไฟล์ images 
+docker rmi <image_name> // ถ้ามี container ที่เกิดจาก image นั้นทำงานอยู่จะลบไม่ได้
+docker rmi -f <image_name> // บังคับให้ลบ
+docker rmi -f $(docker images -a -q) // ลบทั้งหมด
+.
+9) ดูรายชื่อ container 
+docker ps // แสดง container ที่ทำงานอยู่
+docker ps -a // แสดงรายการ container ทั้งหมดที่ทำงานอยู่และหยุดทำงานไปแล้ว
+.
+10) ลบ container
+docker rm <container_name> // container ที่กำลังทำงานไม่ได้ ต้อง stop ก่อน
+docker rm -f <container_name> // บังคับลบ
+docker rm $(docker ps -a -q) // ลบทั้งหมด
+docker rm $( docker ps -q -f status=exited) // ลบ continer ทั้งหมดที่ไม่ทำงาน
+.
+11) สั่งให้ container ทำงาน (สตาร์ท)
+docker start <container_name>
+.
+12) หยุด container
+docker stop <container_name>
+docker stop $(docker ps -a -q) // หยุดการทำงาน container ทั้งหมด
+.
+13) แช่แข็ง container
+docker pause <CONTAINER_ID> 
+docker unpause <CONTAINER_ID> //เลิกแช่แข็ง
+.
+14) รีโมทเข้าไปใน container แล้วรันคำสั่ง เช่น รัน bash shell ในตัว linux เป็นต้น
+docker exec -it <container_name> <command>
+.
+14) ดูข้อมูลของ container
+docker inspect <container_name>
+.
+15) ดูการใช้ทรัพยกรเครื่องของ container
+docker stats // ทั้งหมด
+docker stats <container_name> // ระบุชื่อ container ถ้าดูแบบหลายตัวให้เว้นวรรคชื่อ container
+.
+16) ดู logs ของ container
+docker logs 
+.
+16) คำสั่งสร้างไฟล์ image
+docker build [OPTIONS] PATH | URL | -
+.
+17) commit ไฟล์ image ที่เราสร้าง
+docker commit  <CONTAINER_ID> <NEW IMAGE NAME>
+.
+18) ส่่งไฟล์ image  ขึ้น docker hub
+docker image push [OPTIONS] NAME[:TAG]
+.
+++++++++++++++++++++
+อธิบายเพิ่ม docker
+++++++++++++++++++++
+docker มันคือ container
+ถ้าจะเรียกให้ถูกต้องเป๊ะๆ ก็คือ software container 
+.
+จะคล้ายๆ Virtual Machine (VM) แต่เบากว่า Overhead น้อยกว่า รันได้เร็วกว่า
+.
+container มันเป็นคอนเซปต์ของการสร้างสภาพแวดล้อมเฉพาะให้กับซอฟต์แวร์ เพื่อให้สามารถทำงานได้โดยไม่กวนกับซอฟต์แวร์ตัวอื่นบนระบบปฏิบัติการเดียวกัน
+.
+เช่น เครื่องลง PHP กับ Apache HTTP ไว้ 
+คราวนี้พอจะรัน Tomcat แล้ว port มันชนกัน
+.
+แต่ถ้าเป็น container 
+ให้นึกถึงว่าเรามีตู้ container  2 ตู้
+ทั้งสองตู้ข้างในมีสภาพแวดล้อมเป็น Linux
+.
+- โดยตู้ container แรก จะติดตั้ง PHP กับ Apache HTTP ไว้
+- ตู้ container ตัวที่สอง จะติดตั้ง Tomcat 
+.
+โดยทั้งสองตู้ที่อยู่ในระบบปฏิบัติการเดียวกัน
+ก็จะรันทำงานแยกสภาพแวดล้อมจากกันไปเลย 
+.
+และเราก็สามารถย้ายตู้ container ที่มีซอฟต์แวร์ที่เราได้ติดตั้งลงไปนั้น ก็สามารถย้ายตู้ไปไว้ที่เครื่องไหนก็ได้
+ขอให้เครื่องนั้นๆ ติดตั้ง docker engine ก็พอ
+.
+.
+.
+อ้างอิง
+- https://sites.google.com/site/chanwit/blogs/what-is-container
+-http://www.siamhtml.com/getting-started-with-docker/
+-https://medium.com/quintuples/รวม-docker-command-line-พื้นฐาน-74b61101effa
+-https://memo8.com/docker-command/
+.
+.
+.
+✍ เรียบเรียงโดย โปรแกรมเมอร์ไทย thai programmer

@@ -1,0 +1,14 @@
+สร้างไฟล์ jar ใฃ้คำสั่ง
+mvn package
+หรือคลิกขวาที่ pom.xml -> MVN build -> ระบุก goals เป็น -> package
+และจะได้ไฟล์ .jar ที่โพลเดอร์ D:\MyTutor\docker\target\docker-0.0.1-SNAPSHOT.jar
+
+
+
+
+Cite:
+https://www.tutorialspoint.com/spring_boot/spring_boot_creating_docker_image.htm
+
+ถ้าใช้โปรเจคนี้ ถ้าจะสร้างไฟล์ docker image ผ่านคอมมานไลน์ของ MVN ก็ให้ใช้คำสั่งดังนี้ 
+mvn package docker:build
+
