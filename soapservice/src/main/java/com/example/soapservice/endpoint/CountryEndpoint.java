@@ -1,6 +1,5 @@
 package com.example.soapservice.endpoint;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
@@ -26,7 +25,10 @@ public class CountryEndpoint {
 	public GetCountryResponse getCountry(@RequestPayload GetCountryRequest request) {
 		GetCountryResponse response = new GetCountryResponse();
 		response.setCountry(countryRepository.findCountry(request.getName()));
-
+		System.out.println("++++++++++Response from the web services++++++++++");
+		System.out.println("Find country is " + request.getName());
+		System.err.println("Capital is " + response.getCountry().getCapital());
+		System.err.println("Population is " + response.getCountry().getPopulation());
 		return response;
 	}
 }

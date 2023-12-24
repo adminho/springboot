@@ -25,6 +25,7 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 
 	// ดู wsdl ไฟล์
 	// ใช้พาธ: http://localhost:8080/ws/countries.wsdl
+	// endpoint คือ http://localhost:8080/ws/
 	@Bean(name = "countries")
 	DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema countriesSchema) {
 		DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();

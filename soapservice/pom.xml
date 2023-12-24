@@ -63,7 +63,7 @@
 				<configuration>
 					<sources>
 						<source>${project.basedir}/src/main/resources/countries.xsd</source>
-					</sources>
+					</sources>					
 				</configuration>
 			</plugin>
 			<!-- end::xsd[] -->
