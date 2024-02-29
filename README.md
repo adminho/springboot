@@ -8,8 +8,10 @@ git clone https://github.com/adminho/springboot.git
 ```
 ![alt text](images/git_clone_command.PNG)
 ก็จะได้โฟลเดอร์ <your_directory>/springboot
+
 2. ดาวน์โหลดไฟล์ lombok.jar https://projectlombok.org/download
-3. ดับเบิลคลิก lombok.jar -> เลือกไฟล์ Ecplise.exe หรือ SpringToolSuite4.exe ที่จะปลั๊กอิน lombok เข้าไป (ปกติมันจะสแกนหาเจอให้อัตโนมัติ)
+   
+4. ดับเบิลคลิก lombok.jar -> เลือกไฟล์ Ecplise.exe หรือ SpringToolSuite4.exe ที่จะปลั๊กอิน lombok เข้าไป (ปกติมันจะสแกนหาเจอให้อัตโนมัติ)
 ![alt text](images/click_lombok.PNG)
 
 5. ถ้าข้อ 3 ไม่เจอให้เลือก specify location
