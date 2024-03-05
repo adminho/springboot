@@ -34,3 +34,9 @@ git clone https://github.com/adminho/springboot.git
 
 13. รอให้ update โปรเจคจนเสร็จสิ้น (ใช้เวลานานหน่อย)
 
+หมายเหตุ
+ถ้า Error ประมาณนี้ 
+java.lang.UnsupportedClassVersionError: org/springframework/boot/CommandLineRunner has been compiled by a more recent version of the Java Runtime (class file version 61.0), this version of the Java Runtime only recognizes class file versions up to 60.0
+
+ก็ต้องลงเซตอัป JRE version >= 17
+![alt text](images/Change_to_current_JDK.PNG)
