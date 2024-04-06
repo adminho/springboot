@@ -1,5 +1,4 @@
 .metadata
 *.zip
 *.class
-../bin
-../../bin
+**/bin
