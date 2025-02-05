@@ -14,7 +14,7 @@ import reactor.core.publisher.Mono;
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService { 
     // Final field for UserRepository 
-    private final UserRepository userRepository; 
+    private UserRepository userRepository; 
   
     // Method to get a user by ID 
     @Override
@@ -32,5 +32,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public Mono<Void> saveUser(User user) { 
         return userRepository.save(user); 
-    } 
+    }
+
 } 
