@@ -1,5 +1,6 @@
 package com.example.reactiveweb.service;
 
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor; 
 import org.springframework.stereotype.Service;
 
@@ -11,11 +12,15 @@ import reactor.core.publisher.Mono;
   
 // Service implementation class for UserService interface 
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class UserServiceImpl implements UserService { 
     // Final field for UserRepository 
-    private UserRepository userRepository; 
-  
+    private final UserRepository userRepository; 
+    
+    public UserServiceImpl() {
+		this.userRepository = null;		
+    }
+    
     // Method to get a user by ID 
     @Override
     public Mono<User> getUserById(String id) { 
